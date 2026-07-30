@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Market | Refurbished Electronics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f5f5f7;
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --accent-green: #00a660;
+            --accent-light-green: #e6f6f0;
+            --gray-text: #666666;
+            --border-color: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--black);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 2rem;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background-color: var(--primary-bg);
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: var(--black);
+        }
+
+        .nav-icons a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Navigation Categories */
+        .categories {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            gap: 2rem;
+            border-top: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: var(--gray-text);
+            font-weight: 400;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .categories a:hover {
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #dcf2e8;
+            margin: 2rem 5%;
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Product Grid */
+        .section-title {
+            margin: 3rem 5% 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 4rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .condition-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--accent-light-green);
+            color: var(--accent-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin: 1.5rem 0;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--black);
+        }
+
+        .product-original-price {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .search-container {
+                margin: 0;
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Back Market</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search for a smartphone, MacBook, etc...">
+        </div>
+        <div class="nav-icons">
+            <a href="#">Help</a>
+            <a href="#">Sign in</a>
+            <a href="#">Cart (0)</a>
+        </div>
+    </header>
+
+    <!-- Categories Nav -->
+    <div class="categories">
+        <a href="#">Smartphones</a>
+        <a href="#">MacBooks</a>
+        <a href="#">Tablets</a>
+        <a href="#">Audio</a>
+        <a href="#">Smartwatches</a>
+        <a href="#">Gaming Consoles</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Tech reborn.<br>Prices re-imagined.</h1>
+        <p>Get up to 70% off on professionally refurbished electronics. 100% functional. 1-year warranty included.</p>
+        <a href="#" class="btn">Shop Best Sellers</a>
+    </section>
+
+    <!-- Trending Products -->
+    <h2 class="section-title">Trending deals right now</h2>
+    
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <a href="#" class="product-card">
+            <span class="condition-badge">Excellent</span>
+            <img src="https://placehold.co/200x200/ffffff/1a1a1a?text=iPhone+13" alt="iPhone 13" class="product-img">
+            <h3 class="product-title">iPhone 13 - 128GB - Unlocked</h3>
+            <div class="price-container">
+                <span class="product-price">$389</span>
+                <span class="product-original-price">$799</span>
+            </div>
+        </a>
+
+        <!-- Product 2 -->
+        <a href="#" class="product-card">
+            <span class="condition-badge">Good</span>
+            <img src="https://placehold.co/200x200/ffffff/1a1a1a?text=MacBook+Air" alt="MacBook Air" class="product-img">
+            <h3 class="product-title">MacBook Air 13.3" (2020) - M1</h3>
+            <div class="price-container">
+                <span class="product-price">$629</span>
+                <span class="product-original-price">$999</span>
+            </div>
+        </a>
+
+        <!-- Product 3 -->
+        <a href="#" class="product-card">
+            <span class="condition-badge">Fair</span>
+            <img src="https://placehold.co/200x200/ffffff/1a1a1a?text=AirPods+Pro" alt="AirPods Pro" class="product-img">
+            <h3 class="product-title">AirPods Pro (1st Gen)</h3>
+            <div class="price-container">
+                <span class="product-price">$119</span>
+                <span class="product-original-price">$249</span>
+            </div>
+        </a>
+
+        <!-- Product 4 -->
+        <a href="#" class="product-card">
+            <span class="condition-badge">Excellent</span>
+            <img src="https://placehold.co/200x200/ffffff/1a1a1a?text=Galaxy+S22" alt="Galaxy S22" class="product-img">
+            <h3 class="product-title">Samsung Galaxy S22 - 256GB</h3>
+            <div class="price-container">
+                <span class="product-price">$299</span>
+                <span class="product-original-price">$849</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Back Market Clone. Built beautifully as requested.</p>
+    </footer>
+
+</body>
+</html>
